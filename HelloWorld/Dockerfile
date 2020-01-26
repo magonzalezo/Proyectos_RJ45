@@ -6,6 +6,8 @@ WORKDIR /opt/miguel
 
 COPY . ./
 
+RUN ls
+
 RUN mvn clean install
 
 EXPOSE 8080
