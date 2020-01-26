@@ -5,3 +5,4 @@ services:
     image: hello_world
     ports: 
      - 9090:8080
+    restart: always
