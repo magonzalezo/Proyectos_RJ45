@@ -1,0 +1,7 @@
+version: '3'
+services:
+  HelloWorld:
+    container_name: Contenerdor_HelloWorld
+    image: hello_world
+    ports: 
+     - 9090:8080
