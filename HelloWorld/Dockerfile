@@ -4,7 +4,7 @@ RUN mkdir -p /opt/miguel
 
 WORKDIR /opt/miguel
 
-COPY ./HelloWorld ./
+COPY . ./
 
 RUN ls
 
