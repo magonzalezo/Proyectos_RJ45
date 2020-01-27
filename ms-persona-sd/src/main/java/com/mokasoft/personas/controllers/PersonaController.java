@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mokasoft.personas.entities.PersonaEntity;
@@ -28,4 +30,9 @@ public class PersonaController {
         result.forEach(personasList ::add);
         return personasList;
     }
+    
+    @PostMapping("/persona")
+	public void agregarPersona(@RequestBody PersonaEntity nueva) {
+    	personaRepository.save(nueva);
+	}    
 }
