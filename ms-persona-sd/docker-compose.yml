@@ -1,14 +1,11 @@
 version: '3'
 services:
-  bd:
-    container_name: postgres-microservicio
-    image: postgres
-    ports:
-      - 5434:5432
   personas:
     container_name: personas_contenedor
-    image: deisylh/ubuntu-basic
+    image: mokanime/img_personas
     ports: 
      - 9292:8080
-    depends_on:
-      - bd
+    environment:
+     - POSTGRES_URL=jdbc:postgresql://46.183.113.254:5432/postgres
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=
