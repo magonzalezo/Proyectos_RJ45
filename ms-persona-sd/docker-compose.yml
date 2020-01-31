@@ -10,3 +10,5 @@ services:
     image: deisylh/ubuntu-basic
     ports: 
      - 9292:8080
+    depends_on:
+      - bd
