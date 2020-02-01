@@ -6,7 +6,7 @@ WORKDIR /opt/miguel
 
 COPY . ./
 
-RUN mvn clean install
+RUN mvn clean install -Dmaven.test.skip=true
 
 EXPOSE 8080
 
