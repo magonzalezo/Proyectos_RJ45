@@ -14,43 +14,45 @@ import com.mokasoft.personas.entities.PersonaEntity;
 import com.mokasoft.personas.repositories.PersonaRepository;
 
 @RestController
+@RequestMapping("/personas")
 public class PersonaController {
 
 	@Autowired
 	private PersonaRepository personaRepository;
 	
-    @GetMapping("/")
-    public String getPersona(){
-        return "Hola";
+    @GetMapping("/test")
+    public String testPersonas(){
+        return "Hola! Te respondo desde personas";
     }
     
-    @GetMapping("/personas")
-    public List<PersonaEntity> getPersonas(){
+    @GetMapping("/")
+    public List<PersonaEntity> obtenerPersonas(){
     	Iterable<PersonaEntity> result = personaRepository.findAll();
         List<PersonaEntity> personasList = new ArrayList<>();
         result.forEach(personasList ::add);
         return personasList;
     }
     
-    @PostMapping("/persona")
+    @PostMapping("/")
 	public void agregarPersona(@RequestBody PersonaEntity nueva) {
-    	personaRepository.save(nueva);
+
+        personaRepository.save(nueva);
 	}
 
-	@GetMapping("/persona/{id}") //Consultar Persona
-    public ResponseEntity <PersonaEntity> getPersonaByID(@PathVariable("id") Integer id){
+	@GetMapping("/{id}")
+    public ResponseEntity <PersonaEntity> obtenerPersonaPorID(@PathVariable("id") Integer id){
         PersonaEntity personaEncontrada = personaRepository.findById(id).get();
         return new ResponseEntity(personaEncontrada, HttpStatus.OK);
     }
 
-    @DeleteMapping("/persona/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity <Void> borrarPersona(@PathVariable("id") Integer id){
         personaRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/personas/{genero}/{fecha}")
-    public ResponseEntity <List<PersonaEntity>> getPersonaByGeneroAndFecNac(@PathVariable("genero") String genero, @PathVariable("fecha") @DateTimeFormat(pattern="ddMMyyyy") Date fecha_Nacimiento){
+    @GetMapping("/{genero}/{fecha}")
+    public ResponseEntity <List<PersonaEntity>> obtenerPersonaPorGeneroYFecNac(@PathVariable("genero") String genero, @PathVariable("fecha") @DateTimeFormat(pattern="ddMMyyyy") Date fecha_Nacimiento){
         Iterable<PersonaEntity> result = personaRepository.findPersonaEntitiesByGeneroAndFechaNacimiento(genero, fecha_Nacimiento);
         List<PersonaEntity> personasList = new ArrayList<PersonaEntity>();
         result.forEach(personasList ::add);

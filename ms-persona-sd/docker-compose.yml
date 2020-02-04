@@ -1,11 +1,21 @@
 version: '3'
 services:
-  personas:
+  db:
+    container_name: postgres_container
+    image: postgres
+    ports:
+      - 5444:5432
+    volumes:
+     - /home/miguel/Bases de datos/Volumen/Postgres:/var/lib/postgresql/data
+  ms_personas:
     container_name: personas_contenedor
     image: mokanime/img_personas
     ports: 
      - 9292:8080
+    depends_on:
+     - db
     environment:
-     - POSTGRES_URL=jdbc:postgresql://46.183.113.254:5432/postgres
+     - POSTGRES_URL=jdbc:postgresql://db:5432/postgres
      - POSTGRES_USER=postgres
      - POSTGRES_PASSWORD=
+    
