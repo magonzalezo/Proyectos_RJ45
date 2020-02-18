@@ -2,6 +2,7 @@ package com.mokasoft.personas.controllers;
 
 import java.util.*;
 
+import com.mokasoft.personas.entities.PersonaPK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -76,13 +77,14 @@ public class PersonaController {
 
 	}
 
-	@GetMapping("/{id}")
-    public ResponseEntity <?> obtenerPersonaPorID(@PathVariable("id") Integer id){
+	@GetMapping("/id/{tipoDocumento}/{numDocumento}")
+    public ResponseEntity <?> obtenerPersonaPorID(@PathVariable("tipoDocumento") String tipoDocumento, @PathVariable("numDocumento") String numDocumento){
         PersonaEntity personaEncontrada = null;
         Map<String, Object> response = new HashMap<>();
 
         try {
-            personaEncontrada = personaRepository.findById(id).orElse(null);
+            PersonaPK personaPK = new PersonaPK(tipoDocumento,numDocumento);
+            personaEncontrada = personaRepository.findById(personaPK).orElse(null);
 
             if (personaEncontrada == null) {
                 response.put("mensaje","No se pudo encontrar a la persona.");
@@ -103,13 +105,14 @@ public class PersonaController {
 
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity <?> borrarPersona(@PathVariable("id") Integer id){
+    @DeleteMapping("/{tipoDocumento}/{numeroDocumento}")
+    public ResponseEntity <?> borrarPersona(@PathVariable("tipoDocumento") String tipoDocumento, @PathVariable("numDocumento") String numDocumento){
 
         Map<String, Object> response = new HashMap<>();
 
         try {
-            personaRepository.deleteById(id);
+            PersonaPK personaPK = new PersonaPK("", "");
+            personaRepository.deleteById(personaPK);
             return new ResponseEntity(HttpStatus.OK);
         } catch (DataAccessException dae) {
             response.put("mensaje","Error al eliminar en base de datos.");

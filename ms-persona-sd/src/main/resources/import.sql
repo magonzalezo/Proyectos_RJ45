@@ -1,4 +1,4 @@
-INSERT INTO miguel.persona (id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES(1, 'Miguel', 'Angel', 'Gonzalez', 'Ordonez', '2020-02-03', 'M');
-INSERT INTO miguel.persona (id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES(2, 'Eduardo', 'EEEE', 'EEEE', 'EEEE', '2020-02-03', 'M');
-INSERT INTO miguel.persona (id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES(3, 'Deisy', 'DDDD', 'DDDD', 'DDDD', '2020-02-03', 'M');
-INSERT INTO miguel.persona (id, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES(4, 'Liliana', 'LLLL', 'LLLL', 'LLLL', '2020-02-03', 'M');
+INSERT INTO miguel.persona (tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES('CC', '123', 'Miguel', 'Angel', 'Gonzalez', 'Ordonez', '2020-02-03', 'M');
+INSERT INTO miguel.persona (tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES('CC', '456', 'Eduardo', 'EEEE', 'EEEE', 'EEEE', '2020-02-03', 'M');
+INSERT INTO miguel.persona (tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES('CC', '789', 'Deisy', 'DDDD', 'DDDD', 'DDDD', '2020-02-03', 'M');
+INSERT INTO miguel.persona (tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, genero) VALUES('CC', '012', 'Liliana', 'LLLL', 'LLLL', 'LLLL', '2020-02-03', 'M');

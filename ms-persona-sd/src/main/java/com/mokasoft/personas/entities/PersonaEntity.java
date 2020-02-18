@@ -2,10 +2,7 @@ package com.mokasoft.personas.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,9 +19,9 @@ import lombok.ToString;
 @Table(name="persona", schema="miguel")
 public class PersonaEntity {
 
-	@Id
-	private Integer id;
-    
+	@EmbeddedId
+	private PersonaPK personaPK;
+
 	@Column(name="primer_nombre")
 	private String primerNombre;
 	
@@ -42,5 +39,5 @@ public class PersonaEntity {
 	
 	@Column(name="genero")
     private String genero;
-	
+
 }

@@ -1,5 +1,6 @@
 package com.mokasoft.personas.repositories;
 
+import com.mokasoft.personas.entities.PersonaPK;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface PersonaRepository extends CrudRepository<PersonaEntity, Integer>{
+public interface PersonaRepository extends CrudRepository<PersonaEntity, PersonaPK>{
 
     @Query("SELECT a FROM PersonaEntity a WHERE a.genero=:genero AND a.fechaNacimiento=:fecha_nacimiento")
     List<PersonaEntity> findPersonaEntitiesByGeneroAndFechaNacimiento(@Param("genero") String genero, @Param("fecha_nacimiento") Date fecha_nacimiento);
